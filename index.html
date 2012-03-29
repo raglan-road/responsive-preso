@@ -65,7 +65,7 @@
   		</h3>
         <p>
           Responsive Web Design is the practice of designing and building web sites and applications that <em>respond</em> to users' devices: responsive interfaces 
-          will adapt themselves to the user's device in a way that enables the user to transparently use that application regardless of factors like device or browser type or screen resolution.
+          will adapt themselves to the user's device in a way that enables the user to transparently use that application regardless of factors like device- or browser- type or screen resolution.
         </p>
 
         <p>
@@ -76,10 +76,6 @@
 
       <article>
       	<h2>But there's alternatives to this, right?</h2>
-      	
-      	<p class="source">
-      		Yep.
-  		</p>
   	  </article>
 
   	  <article>
@@ -125,47 +121,61 @@
 	  </article>	
 
   	  <article>
-  	  	<h3>Alternative: Serving Different Content to Different User Agents<h3>
+  	  	<h3>Alternative: Serving Different Content to Different User Agent (the "mobile" site)<h3>
 
-	    <p class="smaller">
-	    	.NET MVC 4.0 introduces user agent sniffing by convention and design, which would allow us to change the content we serve up to different user agents and show an iPhone- or Android-specific view instead of our default view.
-	    </p>  	  			
+        <div class="build">
+          <p class="smaller">
+            .NET MVC 4.0 introduces user agent sniffing by convention and design, which would allow us to change the content we serve up to different user agents and show an iPhone- or Android-specific view instead of our default view.
+          </p>            
 
-  	  	<ul class="build smaller">
-  	  		<li>
-  	  			Pros:
-  	  			<ol>
-  	  				<li>It's targeted: we can build a very specific experience for a specific browser</li>
-  	  				<li>We're saving bandwidth: we can tailor views to mobile, saving mobile users from receiving huge amounts of markup or images</li>
-  	  				<li>We have potential access to device APIs via serving up views specific to those devices</li>
-	  		    </ol>
-  		    </li>
-  		    <li>
-  		    	Cons:
-  	  			<ol>
-  	  				<li>Is this scalable? We'll end up with views for iPhone, iPad, Android, &infin;</li>
-  	  				<li>How do we handle cross-platform differences within the same device?</li>
-  	  				<li>Will we always be bogged down by building for the lowest common denominator device on each platform? Is iOS 4 going to be the new IE6, or do we 
-  	  					just drop support for it?</li>
-	  		    </ol>
-  		    </li>  		    	
-	    </ul>
+            <ul class="build smaller">
+              <li>
+                Pros:
+                <ol>
+                  <li>It's targeted: we can build a very specific experience for a specific browser</li>
+                  <li>We're saving bandwidth: we can tailor views to mobile, saving mobile users from receiving huge amounts of markup or images</li>
+                  <li>We have potential access to device APIs via serving up views - including javascript - specific to those devices</li>
+                </ol>
+              </li>
+              <li>
+                Cons:
+                <ol>
+                  <li>Is this scalable? We'll end up with views for iPhone, iPad, Android, &infin;</li>
+                  <li>How do we handle cross-platform differences within the same device?</li>
+                  <li>Will we always be bogged down by building for the lowest common denominator device on each platform? Is iOS 4 going to be the new IE6, or do we 
+                    just drop support for it?</li>
+                </ol>
+              </li>           
+          </ul>
+        </div>
 	  </article>	 
 
   	  <article>
   	  	<h3>And Responsive Web Design's the Answer?<h3>
 
   	  	<p>
-  	  		It can be: It gives us the best combination of effort and impact across devices, plus it requires <em>very little</em> change to our codebase and it allows 
-  	  		us to basically forget about designing and building for devices and instead allows us to design and build for user experience. 
+  	  		It can be.
+        </p>
+        <ul>
+          <li>
+              High bang for the buck:
+              <ul>
+                <li>Best combination of effort and impact across devices</li>
+                <li>Rquires <em>very little</em> change to our codebase</li>
+              </ul>
+          </li>
+          <li>
+              We can forget about "devices" and "browsers" and instead design and build for user experience. 
+          </li>
+        </ul>  	  		
 	  	</p>
 
-	  	<p class="delay">
-	  		I, for one, don't want to start debugging differences in iOS 5, iOS 5.1, Android Gingerbread and Android Ice Cream Sandwich alongside IE7, IE9 and Google Chrome.
+	  	<p class="smaller">
+	  		I, for one, don't want to start debugging differences in iOS 5, iOS 5.1, Android Gingerbread and Android Ice Cream Sandwich alongside IE7, IE9 and Google Chrome. Ew.
   		</p>
 	  </article>		     
 
-  	  <article>
+  	<article>
   	  	<h2> So, how do we make our application responsive?</h2>
 	  </article>		 
 
@@ -177,6 +187,10 @@
 	  		Baseline functionality is just that: it's the level of functionality that we want every user of the site to see, regardless of what device or browser they're using.
 	  		It's our site's design and functionality stripped down to the barebones experience: users receive just enough content, styling, and interactivity to accomplish their goal. That's it.
   		</p>
+      <p>
+        What's the baseline functionality for a discussion? Contributing and viewing replies. For a chat? Seeing the stream of contributions and being able to post your own. For a media gallery? 
+        Brainstorm? Probably something along those lines.
+      </p>
 	  </article>    
 
 	  <article>
@@ -187,7 +201,57 @@
 	  		We're talking to people like stakeholders and product folks to come to an agreement on one basic question: what's the primary goal for a user to accomplish this goal and 
 	  		what's the minimum level of functionality we need in place to achieve it?
   		</p>
-	  </article>    		  	  
+	  </article>    	
+
+    <article>
+        <h2>A segue into Media Queries</h2>
+    </article>  
+
+    <article>
+      <h3>
+        What exactly are CSS Media Queries?
+      </h3>
+      <p>
+        Media Queries consist of a <em>media type</em> (like screen or print) that applies the contained rules to that specific type of media only and one or more expressions that 
+        set the query's scope.
+      </p>
+      <p>
+        Expressions are usually tests against certain device or browser characteristics, like <code>max-width</code> or <code>device-pixel-ratio</code> (the number of device pixels per CSS pixel; useful for handling retina displays on iOS especially).
+      </p>
+      <p class="smaller">
+        Yes, they can be (ab)used to handle cross-browser differences, too.
+      </p>
+      <p class="source">
+        <a href="https://developer.mozilla.org/en/CSS/Media_queries">Source: Mozilla Developer Network</a>   
+      </p>   
+    </article>
+
+    <article>
+      <h3>What do they look like?</h3>
+
+      <pre class="prettyprint">
+&lt;style type="text/css"&gt;
+@media screen, print and (max-width: 320px) { 
+  /* Tiny resolution on an old school device */
+  #get-a-new-phone{
+    display:block;
+  }
+}
+@media screen, print and (min-width: 960px) { 
+  /* iPhone 4 in landscape mode */
+  /* More screen => show an "optional" element, like a 
+     special tool or extra info */
+  #bar{ 
+    display:block;
+  }
+
+  #foo{
+    /* ... */
+  }
+}
+&lt;/style&gt;
+    </pre>      
+    </article>        	  	  
 
 	  <article>
 	  	<h3>
@@ -220,6 +284,8 @@
 	  	<h3>That looks something like this:</h3>
 	  	<iframe src="http://localhost/cafegourmet/DiscussionContribution/Index?GC=true&id=d0288058-fe1a-467f-9e85-47f46e4b794a&parentId=d0288058-fe1a-467f-9e85-47f46e4b794a&CcS=000" style="width:480px;"></iframe>
 
+      <p class="source">Yep, this would work on all kinds of devices, too</p>
+
 	  </article> 		  
 
 	  <article>
@@ -231,9 +297,12 @@
 	  <article>
 	  	<h3>Now we build upon the baseline...</h3>
 	  	<p>
-	  		Using <em>media queries</em>, we can change how elements are styled based on the resolution we have available to us.
+	  		Using Media Queries, we can change how elements are styled based on the resolution we have available to us.
   		</p>
-
+      <p>
+        The magic: as resolution changes (a device flips from portrait to landscape or a user resizes their browser window), 
+        Media Queries <em>just work</em> and automatically apply themselves based on the new specifications reported by the user agent.
+      </p>
 	  </article> 
 
 	  <article>
@@ -270,7 +339,7 @@
   		</p>
 
   		<p class="smaller">
-  			800 pixels of screen might be available on certain Android devices or maybe a desktop browser that's not fully maximized. 
+  			800 pixels of screen might be available on certain Android devices or maybe a desktop browser that's not fully maximized (most aren't).
 		</p>
 
   		<pre class="prettyprint">
@@ -298,13 +367,17 @@
 	  </article>
 
 	  <article class="nobackground">
-	  	<h2>By starting at our baseline, we ensured that <em>everyone</em> can use the application and users that can receive enhancements to the experience.</h2>
+	  	<h2>
+        By starting at our baseline, we ensured that <em>everyone</em> can use the application and users that can receive enhancements to the experience.
+      <br><br><!-- sorry, I had to do this to fit the default Google Slides template. -->
+        Our view is exactly the same; our stylesheet reacts differently, controlling presentation as it should.
+      </h2>
 	  </article>	 
 
 	  <article class="nobackground">
 	  	<h3>It's not just CSS Media Queries</h3>
 	  	<p>
-	  		Javascript Feature Detection allows us to take the enhancement further, creating a baseline level of browser support that must be in place before taxing 
+	  		Javascript <em>Feature Detection</em> allows us to take the enhancement further, setting a baseline level of browser support that must be in place before taxing 
 	  		a browser with added javascript.
 	  	</p>	  	   	
 	  </article>	
@@ -312,15 +385,19 @@
 	  <article class="nobackground">
 	  	<h3>For example...</h3>
 	  	<p>
-	  		Older or underpowered browsers don't have access to the <code>document.querySelectorAll</code> API. What if we save them processing power by only loading certain
-	  		javascript libraries if that API is available>
+	  		Older or underpowered browsers don't implement the <code>document.querySelectorAll</code> API. What if we save them processing power by only loading certain
+	  		javascript libraries if that API is available?
 	  	</p>	  
 
   		<pre class="prettyprint">
 &lt;script type="text/javascript"&gt;
 if('querySelectorAll' in document){
-	// Let's enhance the experience further here.
-	// Load jQuery, extra widgets, etc.	
+  // Let's enhance the experience further here.  
+  // Load jQuery, extra widgets, etc. via loader like yepnope
+}
+else{
+  // We can load a few low-powered 
+  // alternatives, too.
 }
 &lt;/script&gt;
 		</pre>	  		   	
@@ -332,9 +409,12 @@ if('querySelectorAll' in document){
   		<pre class="prettyprint">
 &lt;script type="text/javascript"&gt;
 if('getUserMedia' in navigator){
-	// We have access to the user's device's camera.
-	// What if we let them upload pictures straight 
-	// from their device?	
+  // We have access to the user's device's camera.
+  // What if we let them upload pictures straight 
+  // from their device?	
+
+  // If a device or browser doesn't implement this
+  // API, they don't need to know about it!
 }
 &lt;/script&gt;
 		</pre>	  		   	
@@ -352,7 +432,7 @@ if('getUserMedia' in navigator){
 		  	<ul>
 		  		<li>Conditionally loaded scripts and stylesheets</li>
 		  		<li>Responsive image loading</li>
-		  		<li>And mobile-specific templates where we need them</li>
+		  		<li>And MVC 4.0's mobile-specific templates where we need them</li>
 	  		</ul>
   		</div>
 
@@ -369,7 +449,7 @@ if('getUserMedia' in navigator){
 	  		allowing you to only serve the largest size necessary for a device, saving bandwidth along the way.
   		</p>
   		<p>
-  			While the standard develops, there are working implementations of both the technique and the <code>picture</code> element that's the new proposed standard. Are they production ready? Maybe not, but they can get us started in the right direction.
+  			While the standard develops, there are <a href="https://github.com/scottjehl/picturefill">working</a> <a href="https://github.com/adamdbradley/foresight.js">implementations</a> of both the technique and the <code>picture</code> element that's the new proposed standard. Are they production ready? Maybe not, but they can get us started in the right direction.
 		</p>
   	  </article>
 
@@ -380,10 +460,10 @@ if('getUserMedia' in navigator){
 	  <article>
 	  	<h3>Responsive Web Design is...</h3>
 	  	<p>
-	  		A bit more than CSS Media Queries. It's a way of developing an application so that <em>everyone</em> can use it, regardless of device or browser, with functionality that gradually enhances from a baseline experience to a full-fledged experience on devices and browsers that can handle it.
+	  		A bit more than CSS Media Queries. It's a way of developing an application so that <em>everyone</em> can use it, regardless of device or browser, with functionality that gradually builds from a baseline experience to a "kitchen-sink" experience on devices and browsers that can handle it.
   		</p>
   		<p>
-  			Moreover, it allows us to abstract away device and browser and think instead of the site experience in terms of availability (of screen) and capability (of platform).
+  			Most importantly, it allows us to abstract away the ideas of "device" and "browser" and think instead of the site experience in terms of availability (of screen) and capability (of platform).
 	    </p>
   	  </article>
 
@@ -392,6 +472,9 @@ if('getUserMedia' in navigator){
   	  	<p>
   	  		Questions?
   	  	</p>
+        <p>
+          Fork these slides <a href="https://github.com/amcintyre-cs/responsive-preso">over on Github</a>.
+        </p>
 	  </article>
       <!--
 
